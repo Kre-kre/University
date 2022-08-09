@@ -2,65 +2,41 @@ package com.example.university.model;
 
 
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.List;
 
-
+@Getter
+@Setter
+@ToString
 
 @Entity
 @Table(name = "students")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id", nullable = false)
-    private long id;
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
-    @OneToMany
-    @JoinColumn(name = "student_id")
-    private List<Faculty> faculties;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculties;
 
 
-    public long getId() {
-        return id;
+    public Student() {
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Student(String name, String surname, Faculty faculties) {
         this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public List<Faculty> getFaculties() {
-        return faculties;
-    }
-
-    public void setFaculties(List<Faculty> faculties) {
         this.faculties = faculties;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", faculties=" + faculties +
-                '}';
     }
 }
 

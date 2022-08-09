@@ -2,6 +2,7 @@ package com.example.university.controller;
 
 import com.example.university.model.Teacher;
 import com.example.university.service.TeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/teacher")
 public class TeacherController {
-
+    @Autowired
     private final TeacherService teacherService;
 
     public TeacherController(TeacherService teacherService) {

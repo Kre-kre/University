@@ -5,7 +5,6 @@ import com.example.university.repository.TeacherRepository;
 import com.example.university.service.TeacherService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,11 +12,11 @@ import java.util.Optional;
 
 
 @Service
-public class TeacherRepositoryImpl implements TeacherService {
+public class TeacherServiceImpl implements TeacherService {
     private final TeacherRepository teacherRepository;
 
     @Autowired
-    public TeacherRepositoryImpl(@Lazy TeacherRepository teacherRepository) {
+    public TeacherServiceImpl(TeacherRepository teacherRepository) {
         this.teacherRepository = teacherRepository;
     }
 
